@@ -1,0 +1,76 @@
+server:
+  port: 8060
+  servlet:
+    context-path: /common
+  error:
+    whitelabel:
+      enabled: true
+
+spring:
+  application:
+    name: GreenbeeAPI
+
+  datasource:
+    url: jdbc:postgresql://176.9.121.6:5432/app_mon
+    driverClassName: org.postgresql.Driver
+    username: app_mon_user
+    password: dshfkjl^HJHKJHJGdsklfjl2&^%$
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        temp:
+          use_jdbc_metadata_defaults: false
+
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+      FAIL_ON_EMPTY_BEANS: false
+
+
+mailgun:
+  url: https://api.mailgun.net/v3/
+  apiKey: key-
+  from: Commom <do-not-replay@Commom.com>
+  domain: domain
+
+
+logging:
+  file:
+    name: ${spring.application.name}.log
+    path: /var/log/${spring.application.name}
+  level:
+    root: info
+    com.stanum: debug
+#    org.hibernate: DEBUG
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+#
+
+jwt:
+  headerName: X-token
+  issuedBy: fit
+  lifetime: 480000 #in hours, !!!!!! set lower values in a non-local environments
+
+jwtKey:
+  public: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4RsqDWxgCpWtmguoa32aQOy26iu3rVXAQ8aSVE3q4uyWqPurBZHyBzpNjamVmqq7Ol6EZKbnZSOvKjn6rV6Bt6rIWHLoUhq09X9qYnKx8GjSHLloy6pjKJACKhXVkZEbEaVdPnUrlyFlKTYnjc1iL6BTc4S/jrmg1VQfqOaUzYw764rQ/DxpJp5BahTiI7UCo/KZS9P5rKQawlTEWF6KOSfrE7I6b2bqTVPcfsF2+6uqh2oOLdmMvnhT+HKdHe7bUqpEA5aB0CC9s/UGdjKn+3akW+PKhyfb0k9nkVbWIq0loeeWyvXrF10wJtrWrGBHtNI6vqyPrJEgVkxU9AH/lQIDAQAB
+  private: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDhGyoNbGAKla2aC6hrfZpA7LbqK7etVcBDxpJUTeri7Jao+6sFkfIHOk2NqZWaqrs6XoRkpudlI68qOfqtXoG3qshYcuhSGrT1f2picrHwaNIcuWjLqmMokAIqFdWRkRsRpV0+dSuXIWUpNieNzWIvoFNzhL+OuaDVVB+o5pTNjDvritD8PGkmnkFqFOIjtQKj8plL0/mspBrCVMRYXoo5J+sTsjpvZupNU9x+wXb7q6qHag4t2Yy+eFP4cp0d7ttSqkQDloHQIL2z9QZ2Mqf7dqRb48qHJ9vST2eRVtYirSWh55bK9esXXTAm2tasYEe00jq+rI+skSBWTFT0Af+VAgMBAAECggEABqEQKfkJEwa5aBHz0caPJl5SPK8w54/g654LbSQmSKyC+1L+BFn58LCM3CEkYLuqa9ugtn4bzmSwoeO3OCfSViBXahNoOBLFRX2NGn0aNGRB28qyBV1tMiKbjbW65mCJlYlzJ4W31OmM2xvXKlvkClcEXiCIq6FX1TB3BjhUJYFvk/7uWR5I76QqHHlZUVb6jeqCREht4fKAxy8RAOUxFurjP6hv1knKjQHzOzNiP/RSQnLPwZc690mn6HXZ2uS6dXU0XPJZVriqwca8pltYP1plpCPc0RARjC5C0tRhvinnoPNNJMzhd6MRrg548lPUnDiKppkfeijit6zPHCZ1+QKBgQD5hVwMtKSKv3Mem2nVEwORstNoBNZ2iYpU77flIM5yQ9tFA69lCk6FH+EccPJDOA7iL6uLRuMAYmV1/ZQZty16iRV7g2E5QZ/myYNlO0LvCqZS+pkTQ2quz3M39V6qwtwMILlt3CHRo+97cqO1k8g/iB3agulRmWf2G1zplErFNwKBgQDm84MU63SUIgxlTyNAtFWqp8MdRqH3jBo1BMWzczngw7GzQSFoiCmHBy5GZpkoLep7ksK6jwXcaDG/MQTwEclsK4QYEPWTwW/uM7rKvCGEDnCu9FNX55FSpgkmtc61g/E6BW8kaNs6AyRQAvwaW5ufHW45na7OOECosmBTouPHkwKBgBFTwHOla7Oy3cSnWC8StfG9ME8N3vK2VGPXjback5l9utFNEzX6BD/cWd6GvVwLnYT5eHkggAz7yD3sUQeEH+VddZ9xHSRDuV3manhyKBC/dZNXkZ+z08m14DNnl55WD7/L2fSWD8cmEjBJYrLuQz6eLiyJYLho5b5CYi5aPOL7AoGBAMWO1rmFdHLm8U2UNaa63HEgEtKvQguc6CokS+3mikMPg6m/9BEUMNnVtar5RthM9sEAWNz3TV8uLifLidrGjFOgod1oXHopRVMxIv8bkVwCcjfmvoh6iSB28WsQqKMzG52zWlB99dIZL+3Vr8voQyYIKerVTNwQ2Ja2B5pjw49LAoGBANppxAvDr6TvfcVJ8dmb9qdfuFB8xc3KdxKq2rO4h2I3m+gpoNsZ/u/w+kcuGwJZT3C34chXZ2Jl+WYHI5BRX2auC9bezvWjnJ+NAvMfylaDuHP4KeCa3LklRWElCzoF9Xh7Luw++Ype57ENiYQ9ToF9jkBdiJh9E8VZ6p1Gm1wb
+
+emailConfirmation:
+  isEnabled: true
+  sendOncePerSeconds: 60 #we don't sent emails more often than once per this interval in seconds
+  tokenLifetime: 3600 #lifetime of sent token in seconds
+
+changePassword:
+  sendOncePerSeconds: 60 #we don't sent smses more often than once per this interval in seconds
+  tokenLifetime: 600 #lifetime of sent code in seconds
+

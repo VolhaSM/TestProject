@@ -1,0 +1,3 @@
+2020-06-18 18:15:57.413  INFO 8152 --- [Test worker] com.example.demo.DemoApplicationTests    : Starting DemoApplicationTests on DESKTOP-EN84UUT with PID 8152 (started by User in C:\Users\User\Downloads\demo\demo)
+2020-06-18 18:15:57.430  INFO 8152 --- [Test worker] com.example.demo.DemoApplicationTests    : No active profile set, falling back to default profiles: default
+2020-06-18 18:15:57.894  INFO 8152 --- [Test worker] com.example.demo.DemoApplicationTests    : Started DemoApplicationTests in 0.764 seconds (JVM running for 2.027)
